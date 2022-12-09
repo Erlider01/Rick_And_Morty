@@ -1,0 +1,18 @@
+.navl {
+    text-decoration: none;
+    margin: 0px 10px;
+    padding: 5px;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+} 
+
+
+.active {
+    border: 0px;
+    border-bottom: 3px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-radius: 2px;
+}
+
+

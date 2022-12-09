@@ -1,0 +1,21 @@
+
+@font-face {
+   font-family: "fuente";
+   src: url("Font/OpenSans_SemiCondensed-Regular.ttf") format("truetype");
+}
+
+.App {
+   text-align: center;
+   background: url('./img/background0.jpg') no-repeat center center fixed;
+      background-size: 100%;
+      -moz-background-size: 100%;
+      -webkit-background-size: 100%;
+      -o-background-size: 100%;
+   padding: 25px;
+   height: 100%;
+   min-height: 100vh;
+   padding: 0px;
+   font-family: fuente;
+}
+
+
