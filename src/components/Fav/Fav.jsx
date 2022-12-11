@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
-import { connect, useDispatch } from "react-redux";
-import { set_Back, set_SearchBar } from "../../redux/actions";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { set_Back, set_Filter, set_SearchBar } from "../../redux/actions";
 import NoEncontrado from "../NoEncontrado";
 import cargandoimg from "../../img/espera.gif"
+import { useLocation } from "react-router-dom";
 
 const StyleCards = styled.div`
   position: absolute;
@@ -39,11 +40,13 @@ const StyleCards = styled.div`
 const Fav = ({ myFavorites }) => {
   const [data, setData] = useState([...myFavorites]);
   const dispatch = useDispatch();
-  dispatch(set_SearchBar(false))
+  const filter = useSelector((state) => state.searchBar.filter);
+    dispatch(set_SearchBar({ rendery: true, search: false, filter: filter }));
   dispatch(set_Back(true))
   useEffect(()=>{
     setData([...myFavorites]);
   }, [myFavorites])
+
   return (
     <div>
       <StyleCards>
@@ -65,7 +68,7 @@ const Fav = ({ myFavorites }) => {
       )}
       </StyleCards>
       {data.length === 0 ? (
-        <NoEncontrado messange="No ha incluido cards a sus favoritos..." />
+        <NoEncontrado messange="Favoritos se encuentra vacio..." />
       ) : (
         ""
       )}

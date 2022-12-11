@@ -22,7 +22,6 @@ function App() {
         login: true,
       });
     }
-    console.log(datos, access);
   };
 
   const cerrarSesion = () => {

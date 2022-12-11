@@ -219,11 +219,6 @@ export default function Form({ onAccess }) {
     });
   };
 
-/*   useEffect(()=> {
-    if(errors.valido){     
-        setErrors({...errors, valido: ""})
-  }}, [errors]) */
-
   return (
     <Principal>
       <Div className={errors.valido ? "incorrecto" : ""}>
@@ -253,16 +248,6 @@ export default function Form({ onAccess }) {
           </div>
           <button
             onClick={(ele) => {
-              onAccess(datos);
-              setErrors({
-                ...errors,
-                ...validate(datos, "valido"),
-                username: "",
-                password: "",
-              });
-              setDatos({ ...datos, username: "", password: "" });
-            }}
-            onKeyPress={(ele) => {
               onAccess(datos);
               setErrors({
                 ...errors,

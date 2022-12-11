@@ -43,7 +43,8 @@ export default function Cards(props) {
   const [validacion, setValidacion] = useState(false);
   const [cargando, setCargando] = useState(false);
   const dispatch = useDispatch();
-  dispatch(set_SearchBar(true))
+  const filter = useSelector((state) => state.searchBar.filter);
+  dispatch(set_SearchBar({rendery: true, search: true, filter: filter }));
   dispatch(set_Back(false));
 
   useEffect(() => {

@@ -1,78 +1,60 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import photo from '../../img/photo.jpg'
+import { useDispatch } from "react-redux";
+import { set_Back, set_SearchBar } from "../../redux/actions";
 
 const Span = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0px auto;
+  text-shadow: 0px 0px 10px black;
 `;
 
 const Div = styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  background-color: #000000d9;
-  width: 750px;
-  margin: 10px auto;
-  padding: 10px;
-  border-radius: 10px;
+padding: 0px;
+margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 950px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 `;
 const Div1 = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 10px;
-  margin: 5px auto;
+  padding: 5px;
+  margin: 0;
 `;
 const Div2 = styled.div`
   padding: 5px;
 
   p {
     img {
-      width: 130px;
+      width: 180px;
       border-radius: 5px;
       float: left;
+      margin: 0px;
       margin-right: 15px;
     }
-
+    
     font-size: 1.2rem;
+    text-shadow: 0px 0px 10px black;
     color: white;
     text-align: justify;
-    width: 650px;
     margin: 10px auto;
   }
 `;
 
-const Buttons = styled.button`
-  background: none;
-  border-style: none;
-  padding: 2px;
-  margin: 0px auto;
-  position: absolute;
-  img {
-    width: 50px;
-    :hover {
-    box-shadow: 1px 1px 5px #fcfcff44;
-  }
-}
-`;
-
 export default function About() {
+  const dispatch = useDispatch()
+  dispatch(set_SearchBar(false))
+  dispatch(set_Back(true))
   return (
     <Div>
       <Div1>
-        <Buttons>
-          <Link to={"/home"}>
-            <img
-              src="http://departamentos.colegiosansaturio.com/deptomatesweb/4ESO/informatica%20web/temas/Unidad_5/images/atras.png"
-              alt=""
-            />
-          </Link>
-        </Buttons>
         <Span>Acerca de: </Span>
       </Div1>
       <Div2>

@@ -8,64 +8,78 @@ import { set_Back, set_SearchBar } from "../../redux/actions";
 
 const Div = styled.div`
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   z-index: 1;
-  padding: 15px;
-  background-color: #00000094;
-  overflow: auto;
-  box-shadow: 0px 0px 5px white;
-  border-radius: 10px;
-
-  :hover {
-    animation: sd 1s linear infinite;
-    text-shadow: 0px 0px 4px 2px white;
-    @keyframes sd {
-      0% {
-        box-shadow: 0px 0px 4px 2px white;
-      }
-
-      50% {
-        box-shadow: 0px 0px 7px 2px white;
-      }
-
-      100% {
-        box-shadow: 0px 0px 4px 2px white;
-      }
-    }
-  }
-  .name {
-    display: block;
-    width: 100%;
-    font-size: 1.5rem;
-    color: white;
+  /* background-color: #00000094; */
+  display: flex;
+  width: 700px;
+  height: 350px;
+  color: white;
+  .imgBox {
+    margin: 0px;
     padding: 0px;
-    margin: 10px 0px;
-  }
-  .img {
-    width: 200px;
-    border-radius: 10px;
-    border: 5px solid #ffffff92;
-  }
-  .detalles {
-    margin: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-  }
-  .text {
-    font-size: 1.2rem;
-    text-align: left;
-    margin: 0px;
-    margin-left: 10px;
-    margin-bottom: ;
-    h3 {
+    width: 350px;
+    height: 350px;
+    img {
       margin: 0px;
-      margin-bottom: 15px;
+      padding: 0px;
+      width: 350px;
+      height: 350px;
+      border-radius: 350px;
     }
   }
+  .detailBox {
+    margin: 0px;
+    padding: 0px;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .titleBox {
+      margin: 0px;
+      padding: 0px;
+      width: 350px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        margin: 0px;
+        padding: 0px;
+        font-size: 1.8rem;
+        text-shadow: 1px 1px 5px black;
+      }
+    }
+  }
+  .description {
+    padding: 0px;
+    margin: 0px;
+    height: 125px;
+    width: 175px;
+    h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      margin: 0px;
+      padding: 0px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 5px black;
+    }
+    p {
+      display: flex;
+      text-align: left;
+      margin: 5px 10px;
+      justify-content: center;
+      font-size: 1rem;
+      text-shadow: 1px 1px 5px black;
+    }
+  }
+
 `;
 
 export default function Detail() {
@@ -93,36 +107,44 @@ export default function Detail() {
 
   return (
     <Div>
-      <h3 className="name">{character.name}</h3>
-      <div className="detalles">
-        <div>
-          <img className="img" src={character.image} alt="" />;
+      <div className="imgBox">
+        <img className="img" src={character.image} alt="" />;
+      </div>
+      <div className="detailBox">
+        <div className="titleBox">
+          <h1 className="name">{character.name}</h1>
         </div>
-        <div className="text">
-          <h3>
-            Status:
+        <div className="boxStatus description">
+          <h3>Status:</h3>
+          <p>
             {character.status === "unknown"
               ? " Desconocido"
               : " " + character.status}
-          </h3>
-          <h3>
-            Especie:
+          </p>
+        </div>
+        <div className="boxEspecie description">
+          <h3>Especie:</h3>
+          <p>
             {character.species === "unknown"
               ? " Desconocido"
               : " " + character.species}
-          </h3>
-          <h3>
-            Genero:
+          </p>
+        </div>
+        <div className="boxGenero description">
+          <h3>Genero:</h3>
+          <p>
             {character.gender === "unknown"
               ? " Desconocido"
               : " " + character.gender}
-          </h3>
-          <h3>
-            Origen:
+          </p>
+        </div>
+        <div className="boxOrigen description">
+          <h3>Origen:</h3>
+          <p>
             {character.origin?.name === "unknown"
               ? " Desconocido"
               : " " + character.origin?.name}
-          </h3>
+          </p>
         </div>
       </div>
     </Div>

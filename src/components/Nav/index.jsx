@@ -91,6 +91,77 @@ const Contenedor = styled.div`
     left: 50%;
     transform: translate(-50%, -15%);
   }
+  .filterContainer {
+    width: 350px;
+    height: 30px;
+    position: absolute;
+    top: 0%;
+    background-color: #000000cf;
+    left: 56%;
+    transform: translate(56%, 0%);
+    padding: 0px 5px;
+    margin: 0px;
+    box-shadow: 0px 0px 3px white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .textFilter {
+      font-size: 1rem;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px;
+      margin: 0px;
+      text-shadow: 0px 0px 3px black;
+      label {
+        font-weight: bold;
+        :hover {
+          text-shadow: 0px 0px 5px black;
+        }
+      }
+
+      input {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        text-shadow: 0px 0px 3px black;
+      }
+    }
+    .idOrder {
+      text-align: left;
+      display: inline-block;
+      font-size: 1rem;
+      width: 175px;
+
+      label {
+        font-size: 1rem;
+        font-weight: bold;
+        text-shadow: 0px 0px 3px black;
+      }
+      select {
+        font-size: 1rem;
+      }
+    }
+    .generoOrder {
+      text-align: center;
+      width: 175px;
+      display: inline-block;
+      font-size: 1rem;
+      select {
+        font-size: 1rem;
+      }
+
+      label {
+        font-size: 1rem;
+        font-weight: bold;
+        text-shadow: 0px 0px 3px black;
+      }
+    }
+    color: white;
+  }
 `;
 const Icohome = styled.div`
   margin: 0px;
@@ -103,6 +174,8 @@ const Icohome = styled.div`
     left: 50%;
     transform: translate(-50%, -50%); */
   }
+
+  
 `;
 
 const Nave = styled.div`
@@ -133,9 +206,9 @@ export default function Nav(props) {
   useEffect(() => {
     setSearchBar(search);
   }, [search]);
-    useEffect(() => {
-      setBack(backS);
-    }, [backS]);
+  useEffect(() => {
+    setBack(backS);
+  }, [backS]);
   return (
     <Contenedor>
       <div className="header">

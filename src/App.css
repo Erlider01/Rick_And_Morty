@@ -1,7 +1,7 @@
 
 @font-face {
    font-family: "fuente";
-   src: url("Font/OpenSans_SemiCondensed-Regular.ttf") format("truetype");
+   src: url("./Font/OpenSans_SemiCondensed-Regular.ttf") format("truetype");
 }
 
 .App {

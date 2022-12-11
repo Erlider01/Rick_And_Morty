@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { setMyFav, deleteMyFav } from "../../../redux/actions";
+import { setMyFav, deleteMyFav, set_AllFavorites, delete_AllFavorites } from "../../../redux/actions";
 import { useState, useEffect } from "react";
 
 const Button = styled.p`
@@ -103,9 +103,9 @@ const Carta = styled.div`
   width: 15rem;
   margin: 1rem 1rem;
 
-  background: #00000075;
-  box-shadow: 0px 0px 8px #ffffff;
-  border-radius: 0.4rem;
+  background: #00000076;
+  box-shadow: 2px 2px 4px #ffffff;
+  border-radius: 0px;
 
   .ver {
     margin: 0px;
@@ -136,7 +136,7 @@ const Carta = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0000006f;
+    background-color: #1818186d;
     border: 4px inset #7777776d;
     padding: 2px;
   }
@@ -177,24 +177,34 @@ function Card({
   id,
   i,
   myFavorites,
+  allFavorites,
   setMyFav,
   deleteMyFav,
+  set_AllFavorites,
+  delete_AllFavorites,
 }) {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
-    myFavorites.forEach((fav) => {
+     myFavorites.forEach((fav) => {
+      if (fav.id === id) {
+        setLike(true);
+      }
+    }); 
+    allFavorites.forEach((fav) => {
       if (fav.id === id) {
         setLike(true);
       }
     });
-  }, [myFavorites]);
+  }, [myFavorites, allFavorites]);
 
   return (
-    <Carta key={i} >
+    <Carta key={i}>
       <div className="header">
         <Link to={`/detail/${id}`}>
-          <SpanSt>{name.length > 16 ? name.substring(0,15)+"..." : name}</SpanSt>
+          <SpanSt>
+            {name.length > 16 ? name.substring(0, 15) + "..." : name}
+          </SpanSt>
         </Link>
         <p
           onClick={(ele) => {
@@ -206,10 +216,18 @@ function Card({
                 gender: gender,
                 image: image,
               });
+              set_AllFavorites({
+                id: id,
+                name: name,
+                species: species,
+                gender: gender,
+                image: image,
+              });
               setLike(true);
             } else {
               setLike(false);
               deleteMyFav(id);
+              delete_AllFavorites(id);
             }
           }}
           className={like ? "fav like" : "fav"}
@@ -219,6 +237,7 @@ function Card({
         <Button
           onClick={(e) => {
             deleteMyFav(id);
+            delete_AllFavorites(id);
             return onClose(id);
           }}
         >
@@ -238,12 +257,15 @@ function Card({
 }
 const mapStateToProps = (state) => ({
   myFavorites: state.myFavorites,
+  allFavorites: state.allFavorites,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     setMyFav: (payload) => dispatch(setMyFav(payload)),
     deleteMyFav: (payload) => dispatch(deleteMyFav(payload)),
+    set_AllFavorites: (payload) => dispatch(set_AllFavorites(payload)),
+    delete_AllFavorites: (payload) => dispatch(delete_AllFavorites(payload)),
   };
 }
 
